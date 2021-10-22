@@ -165,8 +165,13 @@ const EmbeddedView: React.FC<ViewProps> = (props: ViewProps) => {
     };
   }, [videoRef]);
 
+  /*
+  * for now I just wanted to test whether this will work. So here I tried to register an
+  * event for keydown and prevented default behavior while trying to emit that event manually using the API
+  */
   const handleKeydownInput = (e: KeyboardEvent) => {
     console.log('** event', e);
+    e.preventDefault();
     props.InputEmitter.EmitKeyDown(e);
     props.InputEmitter.EmitKeyPress(e.charCode);
   }
